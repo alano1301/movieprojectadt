@@ -132,7 +132,6 @@ function Register() {
           <div className='form-container'>
             <div className='register-header'>
             <h1>Welcome to <span>NetMovies+</span></h1>
-            <p>NetMovies+ is the streaming home for movies and series from Disney, Marvel, Star Wars, and Star.</p>
             </div>
             <div>
 

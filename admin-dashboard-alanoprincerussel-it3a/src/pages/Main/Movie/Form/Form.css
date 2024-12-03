@@ -1,32 +1,324 @@
 .searched-movie {
-  max-height: 200px;
+  max-height: 50px;
   overflow-y: auto;
 }
 .search-container p:hover {
-  background-color: lightblue;
+  background-color: hsl(36, 100%, 50%);
 }
+
+.form-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  color:hsl(0, 0%, 100%);
+  padding-top: 20px;
+}
+
+
+.tabs-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 100%;
+  margin-right: 2em;
+}
+
+.tabs-container span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tabs-container-group{
+  display: flex;
+  gap: 30px;
+}
+
+.tabs{
+  display: flex;
+  text-decoration: none;
+  list-style: none;
+  gap: 20px;
+  padding: 0;
+}
+
+.tabs li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600; /* Slightly bolder text */
+  cursor: pointer;
+  padding: 10px 15px; /* Padding to increase clickable area */
+  border-radius: 8px;  /* Rounded corners */
+  transition: all 0.3s ease; /* Smooth transition on hover */
+  color: hsl(0, 0%, 100%); /* Subtle gray color for inactive tabs */
+}
+
+.tabs li:hover {
+  background-color: hsl(29, 100%, 50%);  /* Light blue background on hover */
+  color: white; /* White text on hover */
+  transform: scale(1.05); /* Slightly enlarge the tab on hover */
+}
+
+.active-tab {
+  background-color: hsl(32, 100%, 50%); /* Active tab background color */
+  color: white; /* White text for active tab */
+  transform: scale(1.05); /* Slightly enlarge the active tab */
+  border-radius: 8px;  /* Rounded corners for active tab */
+  padding-bottom: 12px; /* Add space at the bottom of active tab */
+}
+
+.tabs-container #saveButton {
+  max-width: 150px;
+  width: 120px;
+  padding: 10px 20px;
+  border-radius: 15px;
+  background-color: #ff5722;  /* Orange background color */
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.tabs-container #saveButton:hover {
+  background-color: #e64a19;  /* Darker orange on hover */
+}
+
+.tabs-container #saveButton i {
+  margin-right: 8px;  /* Space between icon and text */
+}
+
+.search-container{
+  position: relative;
+  display: flex;
+  width: 300px;
+  flex-direction: column;
+}
+
+.search-container input,button{
+  height: fit-content;
+  background-color: hsl(0, 0%, 100%);
+  border: none;
+  color: hsl(0, 0%, 0%);
+}
+
+.search-container span{
+  position: absolute;
+  padding: 10px 10px;
+  color: hsl(208, 100%, 97%);
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.searched-movie {
+  max-height: 450px;
+  position: absolute;
+  top: 40px;
+  background: hsl(38, 100%, 8%);
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  visibility: hidden;
+  opacity: 0;
+  border-radius: 10px;
+}
+
+.searched-movie .container p {
+  font-size: 14px;
+  color: hsl(0, 0%, 100%);
+}
+
+.searched-movie .container{
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pagination {
+  position: absolute;
+  bottom: 0;
+  width: 96%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px;
+  background: hsl(38, 100%, 8%);
+}
+
+.pagination button {
+  cursor: pointer;
+  padding: 10px 20px;  /* Medium padding (adjusted from previous) */
+  background-color: #ff5722;  /* Orange color */
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;  /* Medium font size */
+  transition: background-color 0.3s, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;  /* Center the content (text and icon) */
+}
+
+.pagination button span {
+  font-size: 18px;
+  margin-right: 8px;  /* Space between arrow and text */
+}
+
+.pagination button p {
+  margin: 0;
+  font-size: 16px;  /* Medium text size */
+  padding: 0px 10px;
+}
+
+.pagination button:hover{
+  color: hsl(41, 83%, 55%);
+}
+
+.pagination button:hover {
+  background-color: #e64a19;
+  transform: scale(1.05);
+}
+
+.movie-list{
+  text-wrap: wrap;
+  position: absolute;
+  overflow-y: auto;
+  height: 85%;
+  width: 100%;
+}
+
+.movie-list::-webkit-scrollbar{
+  display: none;
+}
+
+.search-container .fa-search {
+  color: #ff5722;  /* Orange color */
+  font-size: 20px;  /* Adjust the icon size if needed */
+}
+
+.search-pagination{
+  position: absolute;
+}
+
+.searched-movie.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.searched-movie p {
+  font-size: 15px;
+  padding: 10px;
+  margin: -10px;
+}
+
 
 .poster-image {
-  width: 150px;
-  height: auto;
+  width: auto;                  /* Set the width to 50% of the container */
+  height: auto;                /* Maintain the aspect ratio */
+  max-height: 600px;           /* Limit the maximum height */
+  object-fit: cover;           /* Fill the container without distortion */
+  border-radius: 15px;         /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  margin: 10px 0;              /* Add space above and below */
+  margin-left: auto;           /* Center the image horizontally */
+  margin-right: auto;          /* Center the image horizontally */
+  display: block;              /* Block-level element */
 }
 
-.container {
-  overflow: auto;
+.movie-container{
+  margin-top: 20px;
 }
 
-nav {
-  margin-top: 2rem;
-}
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+
+.movie-container form{
+  display: flex;
+  justify-content: space-between;
 }
 
-nav li {
-  display: inline;
-  border: solid;
-  border-width: 1px 1px 0 1px;
-  margin: 0 5px 0 0;
+.movie-container form .col{
+  width: 50%;
 }
+
+.poster-col{
+  display: flex;
+  justify-content: center;
+}
+
+.movie-details{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.field label {
+  font-weight: bold;
+  color: #ff9575;
+  display: contents; /* Ensure the label is above the input for better readability */
+  margin-bottom: 5px; /* Add spacing between label and input */
+}
+
+.movie-details .field input ,textarea{
+  margin-top: 10px;
+  background-color: hsl(0, 0%, 100%);
+  border: 1px solid hsl(34, 100%, 50%);
+  color: hsl(0, 0%, 0%);
+}
+
+.movie-details .text-area{
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-details .text-area textarea{
+  padding: 10px;
+  border-radius: 15px;
+}
+
+
+.custom-select {
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  color: hsl(0, 0%, 0%);
+  background-color: hsl(0, 0%, 100%);
+  border: 1px solid hsl(34, 100%, 50%);
+  border-radius: 8px;
+  appearance: none; /* Remove default arrow in browsers */
+  cursor: pointer;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.custom-select::after {
+  content: '▼';
+  font-size: 14px;
+  color: #666;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.custom-select:focus {
+  border-color: hsl(34, 100%, 50%);
+  box-shadow: 0 0 0 3px rgba(255, 166, 0, 0.25);
+  outline: none;
+}
+
+
+.custom-select option {
+  padding: 10px;
+  color: hsl(0, 0%, 0%);
+  background-color: hsl(0, 0%, 100%);
+}
+
+
+
+

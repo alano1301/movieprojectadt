@@ -10,7 +10,13 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Movies from './pages/Main/Movie/Movie';
 import MovieLists from './pages/Main/Movie/Lists/Lists';
 import MovieForm from './pages/Main/Movie/Form/Form';
+import Casts from './pages/Main/Movie/Form/Cast/Cast';
+import Videos from './pages/Main/Movie/Form/Video/Videos';
+import Photos from './pages/Main/Movie/Form/Photo/Photos';
 import { AuthProvider } from './context/context';
+import Client from './pages/Client/Client';
+import Home from './pages/Client/Home/Home';
+import Movie from './pages/Client/Movie/Movie';
 
 const router = createBrowserRouter([
   {
@@ -49,15 +55,38 @@ const router = createBrowserRouter([
             path: '/main/movies/form/:movieId?/',
             element: <MovieForm />,
             children: [
-          ]
+              {
+                path: 'cast-and-crews/:tmdbId?',
+                element: <Casts/>,
+              },
+              {
+                path: 'videos/:tmdbId?',
+                element: <Videos />,
+              },
+              {
+                path: 'photos/:tmdbId?',
+                element: <Photos />,
+              }
+            ]
           },
         ],
       }
     ],
-  },      
+  },{
+    path: '/home',
+    element: <Client/>,
+    children: [
+        {
+          path: '',
+          element: <Home/>
+        },
+        {
+          path: 'movie/:movieId',
+          element: <Movie/>
+        }
     ]
-  
-);
+  }
+]);
 
 function App() {
   return (

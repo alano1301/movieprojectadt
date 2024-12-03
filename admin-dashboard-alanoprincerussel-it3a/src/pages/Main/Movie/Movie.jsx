@@ -1,12 +1,19 @@
-import { Outlet } from 'react-router-dom';
+import React from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
+import './Movie.css'
 
-const Movie = () => {
+function Movies() {
+
+  const navigate = useNavigate();
+
   return (
     <>
-      <h1>Movie Page</h1>
-      <Outlet />
+        <div className='movies-header-container'>
+          <div className='movies-header' onClick={() => navigate('/main/movies')}>Movies</div>
+        </div>
+        <Outlet />
     </>
-  );
-};
+  )
+}
 
-export default Movie;
+export default Movies
