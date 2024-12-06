@@ -1,0 +1,127 @@
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Main Layout */
+.Main {
+  display: flex;
+  overflow: hidden;
+  max-height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* Custom container holds navigation and main content */
+.Main .custom-container {
+  display: flex;
+  width: 100%;
+}
+
+/* Content (outlet) area */
+.Main .custom-container .outlet {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: white;
+}
+
+/* Sidebar Navigation */
+.Main .custom-container .navigation {
+  background-color: #333; /* Dark background for sidebar */
+  height: 100vh;
+  width: 250px; /* Adjust sidebar width */
+  color: white;
+  padding-top: 40px;
+  position: sticky;
+  top: 0; /* Fixes the sidebar to the top */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Navigation links container */
+.Main .custom-container .navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Main .custom-container .navigation ul li {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  transition: background-color 0.3s ease;
+}
+
+/* Navigation links with icons */
+.Main .custom-container .navigation ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  width: 100%; /* Ensure the whole link area is clickable */
+}
+
+.Main .custom-container .navigation ul li a i {
+  margin-right: 10px; /* Space between icon and text */
+}
+
+/* Hover and active states for navigation items */
+.Main .custom-container .navigation ul li:hover,
+.Main .custom-container .navigation ul li.active {
+  background-color: #444; /* Slightly lighter on hover */
+}
+
+/* Logout button styling */
+.Main .custom-container .navigation ul li.logout {
+  margin-top: auto; /* Push logout button to the bottom */
+}
+
+.Main .custom-container .navigation ul li.logout button {
+  background-color: #f44336;  /* Red background */
+  color: white;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.Main .custom-container .navigation ul li.logout button:hover {
+  background-color: #d32f2f;  /* Darker red on hover */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .Main .custom-container {
+    flex-direction: column;
+  }
+
+  /* Mobile Sidebar - collapse when narrow screens */
+  .Main .custom-container .navigation {
+    width: 100%;
+    height: auto;
+    position: relative; /* Allow position adjustment */
+  }
+
+  .Main .custom-container .outlet {
+    padding: 1rem;
+  }
+
+  /* Adjust list item padding for mobile */
+  .Main .custom-container .navigation ul li {
+    padding: 12px 15px;
+  }
+
+  /* Hide icons on small screens for a more compact layout */
+  .Main .custom-container .navigation ul li i {
+    display: none;
+  }
+}
